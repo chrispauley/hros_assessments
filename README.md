@@ -12,3 +12,5 @@ and also by:
 https://gist.github.com/rattrayalex/fbd1c287c2c13c028b44
 
 Who recommended having docs on the dist/ folder
+
+jekyll build --source _docs_source --destination _site
