@@ -1,5 +1,5 @@
 ---
-title: /books
+title: /packages
 position: 2.0
 type: get
 description: List all packages
