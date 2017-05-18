@@ -26,7 +26,7 @@ right_code: |
 Returns a specific book from your collection
 
 ~~~ javascript
-$.get("http://api.myapp.com/books/3", {
+$.get("http://api.myapp.com/catalog/a/package/1", {
   token: "YOUR_APP_KEY",
 }, function(data) {
   alert(data);
