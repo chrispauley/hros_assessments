@@ -1,6 +1,6 @@
 ---
 title: /books/:id
-position: 1.5
+position: 4.5
 type: delete
 description: Deletes a book
 right_code: |

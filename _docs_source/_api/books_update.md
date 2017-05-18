@@ -1,6 +1,6 @@
 ---
 title: /books/:id
-position: 1.4
+position: 4.4
 type: put
 description: Update Book
 right_code: |

@@ -1,6 +1,6 @@
 ---
 title: /books
-position: 1.0
+position: 4.0
 type: get
 description: List all books
 right_code: |

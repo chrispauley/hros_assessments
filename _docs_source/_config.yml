@@ -3,7 +3,9 @@
 
 title: Aviator
 description: Jekyll template for API documentation.
-url: https://example.com
+url: http://chrispauley.github.io/hros_assessments
+baseurl: ""
+tagline: "A basic guide to Jekyll"
 google_analytics_key:
 permalink: pretty
 source:      _docs_source

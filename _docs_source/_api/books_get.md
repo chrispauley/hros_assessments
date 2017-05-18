@@ -1,6 +1,6 @@
 ---
 title: /books/:id
-position: 1.3
+position: 4.3
 type: get
 description: Get Book
 right_code: |

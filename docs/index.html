@@ -12,8 +12,8 @@
 <meta property="og:title" content="API Docs" />
 <meta name="description" content="Jekyll template for API documentation." />
 <meta property="og:description" content="Jekyll template for API documentation." />
-<link rel="canonical" href="https://example.com/" />
-<meta property="og:url" content="https://example.com/" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Aviator" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
@@ -21,7 +21,7 @@
 "name": "Aviator",
 "headline": "API Docs",
 "description": "Jekyll template for API documentation.",
-"url": "https://example.com/"}</script>
+"url": "http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -82,6 +82,34 @@
 					
 					
 						<li>
+							<a href="#api10_catalog_list">
+								/catalogs
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#api10_catalog_get">
+								/catalog/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#api20_packages_list">
+								/catalog/:id/packages
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#api21_packages_get">
+								/packages/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
 							<a href="#apibooks_list">
 								/books
 								<span class="endpoint get"></span>
@@ -113,20 +141,6 @@
 							<a href="#apibooks_delete">
 								/books/:id
 								<span class="endpoint delete"></span>
-							</a>
-						</li>
-					
-						<li>
-							<a href="#apipackages_list">
-								/packages
-								<span class="endpoint get"></span>
-							</a>
-						</li>
-					
-						<li>
-							<a href="#apipackages_get">
-								/packages/:id
-								<span class="endpoint get"></span>
 							</a>
 						</li>
 					
@@ -272,6 +286,311 @@
 	
 
 	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="api10_catalog_list">
+						/catalogs
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Get Assessment Provider Catalog Meta Data</p>
+				
+
+				<h6>Parameters</h6><dl>
+  <dt>offset</dt>
+  <dd>Offset the results by this amount</dd>
+  <dt>limit</dt>
+  <dd>Limit the number of catalogs returned</dd>
+</dl>
+
+<p class="info">This call will return a maximum of 100 books</p>
+
+<p>Lists all the catalogs you have access to. You can paginate by using the parameters listed above.</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/catalogs/"</span><span class="p">,</span> <span class="p">{</span> <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Python" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.myapp.com/catalogs/"</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<div title="Node.js" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">(</span><span class="s2">"http://api.myapp.com/catalogs?token=YOUR_APP_KEY"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl http://api.myapp.com/catalogs?key<span class="o">=</span>YOUR_APP_KEY
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"documentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"documentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es-MX"</span><span class="w">
+  </span><span class="p">}</span><span class="w">    
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid offset"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="api10_catalog_get">
+						/catalog/:id
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Get Catalog</p>
+				
+
+				<p>Returns a specific book from your collection</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/catalog/1"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Python" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.myapp.com/catalog/1"</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<div title="Node.js" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">(</span><span class="s2">"http://api.myapp.com/catalog/1?token=YOUR_APP_KEY"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl http://api.myapp.com/catalog/1?key<span class="o">=</span>YOUR_APP_KEY
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">{</span><span class="w">
+    </span><span class="nt">"documentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"party"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000234"</span><span class="w"> </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Executive Assessments, Inc."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"personContacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"communication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                          </span><span class="p">{</span><span class="w">
+                              </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"william.peterson@exectesters.com"</span><span class="p">,</span><span class="w">
+                              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="w">
+                          </span><span class="p">}</span><span class="w">
+                      </span><span class="p">],</span><span class="w">
+                      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                          </span><span class="p">{</span><span class="w">
+                              </span><span class="nt">"formattedNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-555-9876"</span><span class="p">,</span><span class="w">
+                              </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="w">
+                          </span><span class="p">}</span><span class="w">
+                      </span><span class="p">],</span><span class="w">
+                      </span><span class="nt">"web"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.exectesters.com"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="nt">"preferred"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bill Peterson"</span><span class="p">,</span><span class="w">
+                      </span><span class="nt">"given"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William"</span><span class="p">,</span><span class="w">
+                      </span><span class="nt">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peterson"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="nt">"roleCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATS Account Representative"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Catalog doesn't exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="api20_packages_list">
+						/catalog/:id/packages
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">List all Assessment Packages in a Catalog</p>
+				
+
+				<h6>Parameters</h6><dl>
+  <dt>offset</dt>
+  <dd>Offset the results by this amount</dd>
+  <dt>limit</dt>
+  <dd>Limit the number of books returned</dd>
+</dl>
+
+<p class="info">This call will return a maximum of 100 books</p>
+
+<p>Lists all the photos you have access to. You can paginate by using the parameters listed above.</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/packages/"</span><span class="p">,</span> <span class="p">{</span> <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Python" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.myapp.com/packages/"</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<div title="Node.js" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books?token=YOUR_APP_KEY"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl http://sampleapi.readme.com/orders?key<span class="o">=</span>YOUR_APP_KEY
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"documentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"supplier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w"> </span><span class="nt">"schemeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap_Id"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assessment Provider, Inc."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"packages"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"packageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Executive Management Assessment Test One"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"descriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"Description for the executive management test one."</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid offset"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="api21_packages_get">
+						/packages/:id
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Get Package</p>
+				
+
+				<p>Returns a specific book from your collection</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Thief"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
 	
 		<section class="doc-content">
 			<section class="left-docs">
@@ -559,135 +878,6 @@
 					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-				</section>
-			
-		</section>
-	
-		<section class="doc-content">
-			<section class="left-docs">
-				<h3>
-					<a id="apipackages_list">
-						/packages
-						
-							<span class="endpoint get"></span>
-						
-					</a>
-				</h3>
-				
-					<p class="description">List all packages</p>
-				
-
-				<h6>Parameters</h6><dl>
-  <dt>offset</dt>
-  <dd>Offset the results by this amount</dd>
-  <dt>limit</dt>
-  <dd>Limit the number of books returned</dd>
-</dl>
-
-<p class="info">This call will return a maximum of 100 books</p>
-
-<p>Lists all the photos you have access to. You can paginate by using the parameters listed above.</p>
-
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/packages/"</span><span class="p">,</span> <span class="p">{</span> <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-<div title="Python" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.myapp.com/packages/"</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
-</code></pre>
-</div>
-
-<div title="Node.js" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-<span class="nx">request</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books?token=YOUR_APP_KEY"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl http://sampleapi.readme.com/orders?key<span class="o">=</span>YOUR_APP_KEY
-</code></pre>
-</div>
-
-			</section>
-
-			
-				<section class="right-code">
-					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hunger Games"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/12/2013"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hunger Games"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15/12/2013"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-</div>
-
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid offset"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-				</section>
-			
-		</section>
-	
-		<section class="doc-content">
-			<section class="left-docs">
-				<h3>
-					<a id="apipackages_get">
-						/packages/:id
-						
-							<span class="endpoint get"></span>
-						
-					</a>
-				</h3>
-				
-					<p class="description">Get Package</p>
-				
-
-				<p>Returns a specific book from your collection</p>
-
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">token</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-			</section>
-
-			
-				<section class="right-code">
-					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Thief"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>

@@ -12,15 +12,15 @@
 <meta property="og:title" content="Search" />
 <meta name="description" content="Jekyll template for API documentation." />
 <meta property="og:description" content="Jekyll template for API documentation." />
-<link rel="canonical" href="https://example.com/search/" />
-<meta property="og:url" content="https://example.com/search/" />
+<link rel="canonical" href="http://localhost:4000/search/" />
+<meta property="og:url" content="http://localhost:4000/search/" />
 <meta property="og:site_name" content="Aviator" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "WebPage",
 "headline": "Search",
 "description": "Jekyll template for API documentation.",
-"url": "https://example.com/search/"}</script>
+"url": "http://localhost:4000/search/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -81,6 +81,34 @@
 					
 					
 						<li>
+							<a href="/#api10_catalog_list">
+								/catalogs
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#api10_catalog_get">
+								/catalog/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#api20_packages_list">
+								/catalog/:id/packages
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#api21_packages_get">
+								/packages/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
 							<a href="/#apibooks_list">
 								/books
 								<span class="endpoint get"></span>
@@ -115,20 +143,6 @@
 							</a>
 						</li>
 					
-						<li>
-							<a href="/#apipackages_list">
-								/packages
-								<span class="endpoint get"></span>
-							</a>
-						</li>
-					
-						<li>
-							<a href="/#apipackages_get">
-								/packages/:id
-								<span class="endpoint get"></span>
-							</a>
-						</li>
-					
 				</ul>
 			</section>
 		
@@ -157,6 +171,74 @@
 				
 					
 						
+						
+						"api-10-catalog-get": {
+							"id": "api-10-catalog-get",
+							"title": "/catalog/:id",
+							"category": "api",
+							"description": "Get Catalog",
+		  				"type": "get",
+							"url": "/#api10_catalog_get",
+							"content": "Returns a specific book from your collection\n\n$.get(\"http://api.myapp.com/catalog/1\", {\n  token: \"YOUR_APP_KEY\",\n}, function(data) {\n  alert(data);\n});\n\n\n\nr = requests.get(\"http://api.myapp.com/catalog/1\", token=\"YOUR_APP_KEY\")\nprint r.text\n\n\n\nvar request = require(\"request\");\nrequest(\"http://api.myapp.com/catalog/1?token=YOUR_APP_KEY\", function (error, response, body) {\n  if (!error &amp;&amp; response.statusCode == 200) {\n    console.log(body);\n  }\n});\n\n\n\ncurl http://api.myapp.com/catalog/1?key=YOUR_APP_KEY"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-10-catalog-list": {
+							"id": "api-10-catalog-list",
+							"title": "/catalogs",
+							"category": "api",
+							"description": "Get Assessment Provider Catalog Meta Data",
+		  				"type": "get",
+							"url": "/#api10_catalog_list",
+							"content": "offset\n  Offset the results by this amount\n  limit\n  Limit the number of catalogs returned\n\n\nThis call will return a maximum of 100 books\n\nLists all the catalogs you have access to. You can paginate by using the parameters listed above.\n\n$.get(\"http://api.myapp.com/catalogs/\", { \"token\": \"YOUR_APP_KEY\"}, function(data) {\n  alert(data);\n});\n\n\n\nr = requests.get(\"http://api.myapp.com/catalogs/\", token=\"YOUR_APP_KEY\")\nprint r.text\n\n\n\nvar request = require(\"request\");\nrequest(\"http://api.myapp.com/catalogs?token=YOUR_APP_KEY\", function (error, response, body) {\n  if (!error &amp;&amp; response.statusCode == 200) {\n    console.log(body);\n  }\n});\n\n\n\ncurl http://api.myapp.com/catalogs?key=YOUR_APP_KEY"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-20-packages-list": {
+							"id": "api-20-packages-list",
+							"title": "/catalog/:id/packages",
+							"category": "api",
+							"description": "List all Assessment Packages in a Catalog",
+		  				"type": "get",
+							"url": "/#api20_packages_list",
+							"content": "offset\n  Offset the results by this amount\n  limit\n  Limit the number of books returned\n\n\nThis call will return a maximum of 100 books\n\nLists all the photos you have access to. You can paginate by using the parameters listed above.\n\n$.get(\"http://api.myapp.com/packages/\", { \"token\": \"YOUR_APP_KEY\"}, function(data) {\n  alert(data);\n});\n\n\n\nr = requests.get(\"http://api.myapp.com/packages/\", token=\"YOUR_APP_KEY\")\nprint r.text\n\n\n\nvar request = require(\"request\");\nrequest(\"http://api.myapp.com/books?token=YOUR_APP_KEY\", function (error, response, body) {\n  if (!error &amp;&amp; response.statusCode == 200) {\n    console.log(body);\n  }\n});\n\n\n\ncurl http://sampleapi.readme.com/orders?key=YOUR_APP_KEY"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-21-packages-get": {
+							"id": "api-21-packages-get",
+							"title": "/packages/:id",
+							"category": "api",
+							"description": "Get Package",
+		  				"type": "get",
+							"url": "/#api21_packages_get",
+							"content": "Returns a specific book from your collection\n\n$.get(\"http://api.myapp.com/books/3\", {\n  token: \"YOUR_APP_KEY\",\n}, function(data) {\n  alert(data);\n});"
+						}
+						
+					
+				
+			
+				
+					
+						,
 						
 						"api-books-add": {
 							"id": "api-books-add",
@@ -234,40 +316,6 @@
 		  				"type": "put",
 							"url": "/#apibooks_update",
 							"content": "title\n  The title for the book\n  score\n  The book’s score between 0 and 5\n\n\nUpdate an existing book in your collection.\n\n$.ajax({\n  \"url\": \"http://api.myapp.com/books/3\",\n  \"type\": \"PUT\",\n  \"data\": {\n    \"token\": \"YOUR_APP_KEY\",\n    \"score\": 5.0,\n    \"title\": \"The Book Stealer\"\n  },\n  \"success\": function(data) {\n    alert(data);\n  }\n});"
-						}
-						
-					
-				
-			
-				
-					
-						,
-						
-						"api-packages-get": {
-							"id": "api-packages-get",
-							"title": "/packages/:id",
-							"category": "api",
-							"description": "Get Package",
-		  				"type": "get",
-							"url": "/#apipackages_get",
-							"content": "Returns a specific book from your collection\n\n$.get(\"http://api.myapp.com/books/3\", {\n  token: \"YOUR_APP_KEY\",\n}, function(data) {\n  alert(data);\n});"
-						}
-						
-					
-				
-			
-				
-					
-						,
-						
-						"api-packages-list": {
-							"id": "api-packages-list",
-							"title": "/packages",
-							"category": "api",
-							"description": "List all packages",
-		  				"type": "get",
-							"url": "/#apipackages_list",
-							"content": "offset\n  Offset the results by this amount\n  limit\n  Limit the number of books returned\n\n\nThis call will return a maximum of 100 books\n\nLists all the photos you have access to. You can paginate by using the parameters listed above.\n\n$.get(\"http://api.myapp.com/packages/\", { \"token\": \"YOUR_APP_KEY\"}, function(data) {\n  alert(data);\n});\n\n\n\nr = requests.get(\"http://api.myapp.com/packages/\", token=\"YOUR_APP_KEY\")\nprint r.text\n\n\n\nvar request = require(\"request\");\nrequest(\"http://api.myapp.com/books?token=YOUR_APP_KEY\", function (error, response, body) {\n  if (!error &amp;&amp; response.statusCode == 200) {\n    console.log(body);\n  }\n});\n\n\n\ncurl http://sampleapi.readme.com/orders?key=YOUR_APP_KEY"
 						}
 						
 					

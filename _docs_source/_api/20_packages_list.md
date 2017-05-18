@@ -1,24 +1,26 @@
 ---
-title: /packages
+title: /catalog/:id/packages
 position: 2.0
 type: get
-description: List all packages
+description: List all Assessment Packages in a Catalog
 right_code: |
   ~~~ json
-  [
-    {
-      "id": 1,
-      "title": "The Hunger Games",
-      "score": 4.5,
-      "dateAdded": "12/12/2013"
+  {
+    "documentId": "1",
+    "language": "en-US",
+    "supplier": {
+      "id": {"value": "001", "schemeId": "ap_Id"},
+      "name": "Assessment Provider, Inc."
     },
-    {
-      "id": 1,
-      "title": "The Hunger Games",
-      "score": 4.7,
-      "dateAdded": "15/12/2013"
-    },
-  ]
+    "packages": [{
+        "packageId": "0001",
+        "name": "Executive Management Assessment Test One",
+        "descriptions": [
+            "Description for the executive management test one."
+        ]
+      }
+    ]
+  }
   ~~~
   {: title="Response" }
 
