@@ -2,7 +2,7 @@
 # Site
 
 title: Aviator
-description: Jekyll template for API documentation.
+description: Sample API Documentation for an Assessment Provider.
 url: http://chrispauley.github.io/hros_assessments
 tagline: "A basic guide to Jekyll"
 baseurl: "" # the subpath of your site, e.g. /blog
